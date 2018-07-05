@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persons3.UWP", "Persons2\Pe
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Persons3", "Persons2\Persons2\Persons3.shproj", "{6BCC79C5-2A6E-41F3-9D11-D686E688C23E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Java-Server", "Java-Server", "{E7B15251-396C-406D-99B7-01F0819E2447}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Downloads\PersonsAPI-0.0.1-SNAPSHOT.jar = ..\..\..\Downloads\PersonsAPI-0.0.1-SNAPSHOT.jar
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Persons2\Persons2\Persons2.projitems*{4186784f-94db-41b5-b165-77f61c605323}*SharedItemsImports = 4

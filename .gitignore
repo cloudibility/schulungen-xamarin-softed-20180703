@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/Persons2/Persons2.Android/bin/Debug
+/Persons2/Persons2.Android/obj
+/Persons2/Persons2.iOS/obj
+/Persons2/Persons2.UWP/obj
