@@ -13,7 +13,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Persons3", "Persons2\Person
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Java-Server", "Java-Server", "{E7B15251-396C-406D-99B7-01F0819E2447}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\Downloads\PersonsAPI-0.0.1-SNAPSHOT.jar = ..\..\..\Downloads\PersonsAPI-0.0.1-SNAPSHOT.jar
+		PersonsAPI-0.0.1-SNAPSHOT.jar = PersonsAPI-0.0.1-SNAPSHOT.jar
 	EndProjectSection
 EndProject
 Global
