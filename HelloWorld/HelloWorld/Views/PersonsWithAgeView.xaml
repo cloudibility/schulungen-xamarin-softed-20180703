@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:HelloWorld.ViewModels"
+             x:Class="HelloWorld.Views.PersonsWithAgeView">
+    
+    <ContentPage.Resources>
+        <viewModels:PersonsWithAgeViewModel x:Key="PersonsWithAgeViewModel" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <Grid BindingContext="{StaticResource PersonsWithAgeViewModel}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Liste -->
+            <ListView ItemTapped="ListView_OnItemTapped" ItemSelected="ListView_OnItemSelected" Grid.Row="0" ItemsSource="{Binding Persons}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Margin="5" 
+                                         BackgroundColor="{Binding IsChecked, Converter={StaticResource BooleanToColorConverter}}">
+                                <Label FontSize="20" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="{Binding Name}"></Label>
+                                <Label FontSize="16" VerticalOptions="Center" HorizontalOptions="End" Text="{Binding Age}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Eingabefelder -->
+            <Grid Grid.Row="1" IsVisible="{Binding ShowInputForm}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Entry Text="{Binding NewPersonName}" Placeholder="Name" Grid.Row="0" Grid.Column="0" />
+                <Entry Text="{Binding NewPersonAge}" Keyboard="Numeric" Grid.Row="0" Grid.Column="1" />
+                <Button Text="Abbruch" Command="{Binding CancelCommand}" Grid.Row="1" Grid.Column="0" />
+                <Button Text="Ok" Command="{Binding AddCommand}" Grid.Row="1" Grid.Column="1" />
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Neu" Command="{Binding NewCommand}" Grid.Column="0" />
+                <Button Text="Löschen" Command="{Binding DeleteCommand}" Grid.Column="1" />
+            </Grid>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

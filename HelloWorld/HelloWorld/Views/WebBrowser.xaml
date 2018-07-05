@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.Views.WebBrowser">
+    
+    <ContentPage.Content>
+
+        <Grid>
+            <!-- Zeilen definieren -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Spalten definieren -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Browser -->
+            <WebView x:Name="browser" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+
+            <!-- Eingabefeld -->
+            <Entry x:Name="address" Grid.Row="1" Grid.Column="0" Placeholder="http://" />
+            
+            <!-- Button -->
+            <Button x:Name="go" Text="Los!" Grid.Row="1" Grid.Column="1" Clicked="go_Clicked" />
+
+        </Grid>
+        
+
+    </ContentPage.Content>
+</ContentPage>

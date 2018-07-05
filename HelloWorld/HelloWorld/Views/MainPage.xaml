@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             x:Class="HelloWorld.Views.MainPage">
+
+    <Grid>
+        <!-- Zeilen mit Höhen definieren -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+
+        <!-- Button in Zeile 4 -->
+        <Button Text="Klick! Mich! An!" 
+                Clicked="ButtonClicked"
+                Grid.Row="3"/>
+        <Button Text="Liste 1" 
+                Clicked="ListClicked"
+                Grid.Row="3" 
+                Grid.Column="1"/>
+        <Button Text="Große Liste" 
+                Clicked="BigListClicked"
+                Grid.Row="4" 
+                Grid.Column="0"
+                Grid.ColumnSpan="2"/>
+    
+        <!-- Label mit Text in Zeile 2 -->
+    	<Label Text="Welcome to Xamarin.Forms!" 
+               x:Name="label" Grid.Row="1" Grid.ColumnSpan="2" />
+        
+    </Grid>
+
+</ContentPage>

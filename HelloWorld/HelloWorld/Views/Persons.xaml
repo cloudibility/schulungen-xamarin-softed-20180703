@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.Views.Persons"
+             xmlns:vm="clr-namespace:HelloWorld.ViewModels">
+
+    <ContentPage.Resources>
+        <vm:PersonsViewModel x:Key="PersonsViewModel" />
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+
+        <Grid BindingContext="{StaticResource PersonsViewModel}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Button Text="Person hinzufügen" Command="{Binding AddPersonCommand}" Grid.Row="1" />
+
+            <!-- Einfache Liste -->
+            <ListView x:Name="list" ItemsSource="{Binding PersonsList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="Beige" Padding="10,3,10,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding}" VerticalOptions="Center" />
+                                <Switch Grid.Column="1" VerticalOptions="Center" IsToggled="True" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </Grid>
+
+
+    </ContentPage.Content>
+    
+</ContentPage>
