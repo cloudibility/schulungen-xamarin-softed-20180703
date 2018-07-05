@@ -17,8 +17,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\PersonsHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Messages\LoadPersonsMessage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Messages\PersonsLoadedMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BaseModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Person.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PersonsViewModel.cs" />

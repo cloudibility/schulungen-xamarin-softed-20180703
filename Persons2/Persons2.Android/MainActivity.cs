@@ -6,7 +6,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using PerpetualEngine.Storage;
 using Persons2.Droid;
 using Prism;
 using Prism.Ioc;
@@ -22,9 +21,6 @@ namespace Persons3.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-
-            // Einfacher Storage-Mechanismus
-            SimpleStorage.SetContext(ApplicationContext);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));

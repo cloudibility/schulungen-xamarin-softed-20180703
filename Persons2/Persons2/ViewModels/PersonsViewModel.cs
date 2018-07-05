@@ -5,9 +5,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using PerpetualEngine.Storage;
 using Persons3.API;
-using Persons3.Messages;
 using Persons3.Models;
 using Prism.Events;
 
@@ -15,8 +13,7 @@ namespace Persons3.ViewModels
 {
     public class PersonsViewModel : BaseModel
     {
-        private readonly IEventAggregator eventAggregator;
-        private readonly SimpleStorage storage;
+        private readonly IPersonHandler personHandler;
 
         public ObservableCollection<Person> Persons { get; set; }
 
@@ -24,37 +21,15 @@ namespace Persons3.ViewModels
 
         public bool HasNoData => !HasData;
 
-        public int AccessCount
+        public PersonsViewModel(IPersonHandler personHandler)
         {
-            get => storage.Get<int>("count", 0);
-            set => storage.Put<int>("count", value);
-        }
+            this.personHandler = personHandler;
 
-        public PersonsViewModel(IPersonHandler personHandler, IEventAggregator eventAggregator)
-        {
-            // Initialisieren / Referenzieren
-            this.storage = SimpleStorage.EditGroup("data");
-
-            // Zugriffszähler erhöhen
-            AccessCount++;
-
-            // Registrieren des Handlers
-            this.eventAggregator = eventAggregator;
-
-            // Reagieren, wenn die PersonsLoadeMessage eintritt
-            eventAggregator.GetEvent<PersonsLoadedMessage>().Subscribe(HandlePersonsLoaded());
-
-            // Publizieren der LoadPersonsMessage-Nachricht
-            eventAggregator.GetEvent<LoadPersonsMessage>().Publish();
-        }
-
-        /// <summary>
-        /// Wird eingebunden, wenn Personen geladen worden sind
-        /// </summary>
-        private Action<List<Person>> HandlePersonsLoaded()
-        {
-            return persons =>
+            Task.Run(async () =>
             {
+                // Daten laden
+                var persons = await personHandler.LoadPersonsAsync();
+
                 // Auf dem UI-Thread ausführen
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -64,7 +39,7 @@ namespace Persons3.ViewModels
                     OnPropertyChanged("HasData");
                     OnPropertyChanged("HasNoData");
                 });
-            };
+            });
         }
     }
 }

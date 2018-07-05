@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Persons3.API;
-using Persons3.Messages;
 using Persons3.Models;
 using Prism.Events;
 
@@ -13,16 +12,6 @@ namespace Persons3.Implementation
 {
     public class PersonHandler : IPersonHandler
     {
-        private readonly IEventAggregator eventAggregator;
-
-        public PersonHandler(IEventAggregator eventAggregator)
-        {
-            this.eventAggregator = eventAggregator;
-
-            // Subscriben auf die LoadPersonsMessage-Nachricht
-            eventAggregator.GetEvent<LoadPersonsMessage>()
-                           .Subscribe(async () => await LoadPersonsAsync());
-        }
 
         public async Task<List<Person>> LoadPersonsAsync()
         {
@@ -43,9 +32,6 @@ namespace Persons3.Implementation
 
                 // ...in Liste von Person-Objekten konvertieren
                 var persons = JsonConvert.DeserializeObject<List<Person>>(content);
-
-                // Personen geladen, Message senden
-                eventAggregator.GetEvent<PersonsLoadedMessage>().Publish(persons);
 
                 // Fertig!
                 return persons;
