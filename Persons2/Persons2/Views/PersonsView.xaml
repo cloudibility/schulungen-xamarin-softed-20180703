@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Persons3.Views.PersonsView">
+    <ContentPage.Content>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Label Text="{Binding AccessCount}" HorizontalOptions="Center" FontSize="10" Grid.Row="1"></Label>
+
+            <Label Text="Lade Daten!" IsVisible="{Binding HasNoData}" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"></Label>
+
+            <ListView ItemsSource="{Binding Persons}" IsVisible="{Binding HasData}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5" Orientation="Horizontal">
+                                <Label FontSize="20" Text="{Binding Name}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Label>
+                                <Label FontSize="16" Text="{Binding Age}" HorizontalOptions="End" VerticalOptions="Center"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
