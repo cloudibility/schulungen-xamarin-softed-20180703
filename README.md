@@ -6,7 +6,7 @@ Es gibt drei Branches:
 
 Das Java-Projekt findet sich unter https://github.com/cloudibility/schulungen-xamarin-softed-20180703-java.
 
-##Links
+## Links
 Ein paar gute Links für die nächsten Schritte:
 - https://docs.microsoft.com/en-us/xamarin/xamarin-forms/get-started/introduction-to-xamarin-forms
 - https://docs.microsoft.com/de-de/azure/app-service-mobile/app-service-mobile-xamarin-forms-get-started
